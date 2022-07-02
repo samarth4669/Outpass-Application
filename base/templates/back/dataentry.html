@@ -1,0 +1,297 @@
+{% load static %}
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Forms / Elements - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'back/favicon.png' %}" rel="icon">
+  <link href="{% static 'back/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'back/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'back/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'back/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'back/quill.snow.css' %}" rel="stylesheet">
+  <link href="{% static 'back/quill.bubble.css' %}" rel="stylesheet">
+  <link href="{% static 'back/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'back/style.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'back/st.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="{% url 'adminhome' %}" class="logo d-flex align-items-center">
+        <img src="{% static 'back/logo.png' %}" alt="">
+        <span class="d-none d-lg-block">Admin</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+       
+        </li><!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{request.user}}</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>{{request.user}}</h6>
+              <span>Faculty</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'loggingout' %}">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'adminhome' %}">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Form Elements</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'adminhome' %}">Home</a></li>
+          <li class="breadcrumb-item">Forms</li>
+          <li class="breadcrumb-item active">Elements</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-6">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Add details of mentee</h5>
+
+              <!-- General Form Elements -->
+              <form  method="POST" action ="{% url 'data' %}">
+                {% csrf_token %}
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label" >Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name ="name" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputEmail" class="col-sm-2 col-form-label">Student ID</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="studentid" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Faculty ID</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="facultyid" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Faculty Name</label>
+                  <div class="col-sm-10">
+                    <input type="text"  class="form-control" name="facultyname"  required>
+                  </div>
+                </div>
+ 
+                <div class="row mb-3">
+                  <legend class="col-form-label col-sm-2 pt-0">Role</legend>
+                  <div class="col-sm-10">
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck1" value="Facultyadvisor"  name="roles">
+                      <label class="form-check-label" for="gridCheck1">
+                        Faculty Advisor
+                      </label>
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck2" value="Warden"  name="roles">
+                      <label class="form-check-label" for="gridCheck2">
+                        Warden
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck2" value="Student-life coordinator"  name="roles">
+                      <label class="form-check-label" for="gridCheck2">
+                        Student Life Co-Ordinator
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label"></label>
+                  <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Submit Form</button>
+                  </div>
+                </div>
+
+              </form><!-- End General Form Elements -->
+
+            </div>
+          </div>
+
+        </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+    
+      
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'back/apexcharts.min.js' %}"></script>
+  <script src="{% static 'back/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'back/chart.min.js' %}"></script>
+  <script src="{% static 'back/echarts.min.js' %}"></script>
+  <script src="{% static 'back/quill.min.js' %}"></script>
+  <script src="{% static 'back/simple-datatables.js' %}"></script>
+  <script src="{% static 'back/tinymce.min.js' %}"></script>
+  <script src="{% static 'back/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'back/main.js' %}"></script>
+
+</body>
+
+</html>
+{% else %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>ERROR</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <link href="{% static 'back/styling.css' %} " rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        
+        <div id="layoutSidenav">
+            
+            <div id="layoutSidenav_content">
+                <main>
+                    <div id="layoutError">
+                        <div id="layoutError_content">
+                            <main>
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-6">
+                                            <div class="text-center mt-4">
+                                                <img class="mb-4 img-error" src="{% static 'back/error-404-monochrome.svg' %}" />
+                                                <p class="lead">Please login</p>
+                                                <a href="{% url 'login' %}">
+                                                    <i class="fas fa-arrow-left me-1"></i>
+                                                    GO TO LOGIN 
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </main>
+                        </div>
+                </main>    
+                
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="{% static 'back/scripts.js' %} "></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="{% static 'back/datatables-simple-demo.js' %}"></script>
+    </body>
+</html>
+
+
+    
+
+{% endif %}

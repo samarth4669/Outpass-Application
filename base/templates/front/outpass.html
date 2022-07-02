@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Request Outpass</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'back/favicon.png' %}" rel="icon">
+  <link href="{% static 'back/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'back/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'back/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'back/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'back/quill.snow.css' %}" rel="stylesheet">
+  <link href="{% static 'back/quill.bubble.css' %}" rel="stylesheet">
+  <link href="{% static 'back/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'back/style.css' %}" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="{% static 'back/st.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+      
+      <a href="#" class="logo d-flex align-items-center">
+        <span class="d-none d-lg-block"> &#160;Out Pass System</span>
+      </a>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+       
+
+        </li><!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{o}}</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>{{o}}</h6>
+              <span>Student</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'loggingout' %}">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Request Out pass</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+          <li class="breadcrumb-item">Forms</li>
+          <li class="breadcrumb-item active">Out Pass Form</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-6">
+
+          
+            </div>
+          </div>
+          <div id="booking" class="section">
+            <div class="section-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="booking-form">
+                            <div class="form-header">
+                                <h1>Out Pass Form</h1>
+                            </div>
+                            <form method="POST" action="{% url 'outpass' %}">
+                                {% csrf_token %}
+                                <div class="form-group"> <input class="form-control" type="text" placeholder="Reason for Leaving" name="reason" required> <span class="form-label">Reason for leaving</span> </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <input class="form-control" type="date" name="leaving" required> <span class="form-label">Date of Leaving</span> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <input class="form-control" type="date" name="returning" required> <span class="form-label">Date of Return</span> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group"> <input class="form-control" type="time" name="starttime" required> <span class="form-label">Time of Leaving</span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group"> <input class="form-control" type="time" name="endtime" required> <span class="form-label">Time of Return</span> </div>
+                                </div>
+                                    <div class="col-md-4">
+                                      <div class="form-group"> <input class="form-control" type="number" name="days" required> <span class="form-label">No of days</span> </div>
+                                        
+                                    </div>
+                                    <div class="col-md-4">
+                                      
+                                      
+                                    </div>
+                                    <div class="col-md-4">
+                                        
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <input class="form-control" type="email" placeholder="Enter your Email" name="email"> <span class="form-label">Email</span> </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-btn"> <button class="submit-btn">Submit Request</button> </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          
+
+        
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'back/apexcharts.min.js' %}"></script>
+  <script src="{% static 'back/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'back/chart.min.js' %}"></script>
+  <script src="{% static 'back/echarts.min.js' %}"></script>
+  <script src="{% static 'back/quill.min.js' %}"></script>
+  <script src="{% static 'back/simple-datatables.js' %}"></script>
+  <script src="{% static 'back/tinymce.min.js' %}"></script>
+  <script src="{% static 'back/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'back/main.js' %}"></script>
+</body>
+
+</html>
