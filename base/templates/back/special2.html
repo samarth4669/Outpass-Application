@@ -120,12 +120,12 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Declined Requests</h1>
+      <h1>special Requests</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{% url 'adminhome' %}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'specialcoordinater' %}">Home</a></li>
           <li class="breadcrumb-item">Requests</li>
-          <li class="breadcrumb-item active">Declined Requests</li>
+          <li class="breadcrumb-item active">special Requests</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -144,7 +144,7 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                declined requests
+                                 special requests database
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -157,6 +157,7 @@
                                             <th >returningdate</th>
                                             <th >days</th>
                                             <th>accept</th>
+                                            <th>decline</th>
                                             
                                         </tr>
                                     </thead>
@@ -169,6 +170,7 @@
                                             <th >returningdate</th>
                                             <th >days</th>
                                             <th>accept</th>
+                                            <th>decline</th>
                                             
                                         </tr>
                                     </tfoot>
@@ -180,7 +182,7 @@
                                         
                                         
                                        
-                                        {% for obj in query %}
+                                        {% for obj in req %}
                                         <tr>
                                             <td >{{obj.pk}}</td>
                                             <td>{{obj.reason}}</td>
@@ -188,7 +190,8 @@
                                             <td>{{obj.starttime}}</td>
                                             <td>{{obj.endtime}}</td>
                                             <td>{{obj.days}}</td>
-                                            <td><a href="{% url 'facultyaccept' pk=obj.pk %}"><img src="{% static 'back/edit.png' %}"></a></td>
+                                            <td><a href="{% url 'acceptcoordinater' pk=obj.pk %}"><img src="{% static 'back/edit.png' %}"></a></td>
+                                            <td><a href="{% url 'declinecoordinater' pk=obj.pk %}"><img src="{% static 'back/delete.png' %}"></a></td>
                                             
                                             
                                         </tr>

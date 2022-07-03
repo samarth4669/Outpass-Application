@@ -11,3 +11,11 @@ class data(models.Model):
     facultyname=models.CharField(max_length=30,default="-")
     
     x=MultiSelectField(choices=ChoiceList,default="-")
+
+class cont(models.Model):
+    name=models.CharField(max_length=30)
+    email=models.CharField(max_length=40)
+    message=models.TextField()
+    date=models.CharField(max_length=20,default="-")
+    time=models.CharField(max_length=20,default="-")
+    facultyid=models.CharField(max_length=20,default="-")

@@ -104,7 +104,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'adminhome' %}">
+        <a class="nav-link collapsed" href="#">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -120,12 +120,12 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Declined Requests</h1>
+      <h1>message Requests</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{% url 'adminhome' %}">Home</a></li>
-          <li class="breadcrumb-item">Requests</li>
-          <li class="breadcrumb-item active">Declined Requests</li>
+          <li class="breadcrumb-item"><a href="{% url 'messageinfaculty' %}">Home</a></li>
+          <li class="breadcrumb-item">Messages</li>
+          <li class="breadcrumb-item active">messages</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -144,31 +144,33 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                declined requests
+                                messages  database
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th >Id</th>
-                                            <th >reason</th>
-                                            <th >email</th>
-                                            <th >startdate</th>
-                                            <th >returningdate</th>
-                                            <th >days</th>
-                                            <th>accept</th>
+                                            <th>ID</th>
+                                            <th>NAME</th>
+                                            <th>EMAIL</th>
+                                            <th>MESSAGE</th>
+                                            <th>DATE</th>
+                                            <th>TIME</th>
+                                            <th>ANSWER</th>
+                                            <th>Delete</th>
                                             
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th >Id</th>
-                                            <th >reason</th>
-                                            <th >email</th>
-                                            <th >startdate</th>
-                                            <th >returningdate</th>
-                                            <th >days</th>
-                                            <th>accept</th>
+                                            <th>ID</th>
+                                            <th>NAME</th>
+                                            <th>EMAIL</th>
+                                            <th>MESSAGE</th>
+                                            <th>DATE</th>
+                                            <th>TIME</th>
+                                            <th>ANSWER</th>
+                                            <th>Delete</th>
                                             
                                         </tr>
                                     </tfoot>
@@ -180,15 +182,17 @@
                                         
                                         
                                        
-                                        {% for obj in query %}
+                                        {% for obj in q %}
                                         <tr>
-                                            <td >{{obj.pk}}</td>
-                                            <td>{{obj.reason}}</td>
+                                            <td>{{obj.pk}}</td>
+                                            <td>{{obj.name}}</td>
                                             <td>{{obj.email}}</td>
-                                            <td>{{obj.starttime}}</td>
-                                            <td>{{obj.endtime}}</td>
-                                            <td>{{obj.days}}</td>
-                                            <td><a href="{% url 'facultyaccept' pk=obj.pk %}"><img src="{% static 'back/edit.png' %}"></a></td>
+                                            <td>{{obj.message}}</td>
+                                            <th>{{obj.date}}</th>
+                                            <th>{{obj.time}}</th>
+                                            <td><a href="{% url 'answerthequery'  pk=obj.pk %} "><img src="{% static 'back/answer.png' %}"></a></td>
+                                            
+                                            <td><a href="{% url 'dealt' pk=obj.pk %}"><img src="{% static 'back/delete.png' %}"></a></td>
                                             
                                             
                                         </tr>

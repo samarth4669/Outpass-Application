@@ -72,7 +72,7 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>{{request.user}}</h6>
-              <span>Faculty Advisor</span>
+              <span>student</span>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -100,7 +100,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'adminhome' %}">
+        <a class="nav-link collapsed" href="{% url 'home' %}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -116,12 +116,12 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Pending Requests</h1>
+      <h1>pending Requests</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{% url 'pending' %}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
           <li class="breadcrumb-item">Requests</li>
-          <li class="breadcrumb-item active">Pending Requests</li>
+          <li class="breadcrumb-item active">pending Requests</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -143,12 +143,12 @@
                     <th scope="col">startdate</th>
                     <th scope="col">returningdate</th>
                     <th scope="col">days</th>
-                    <th scope="col">Accept</th>
-                    <th scope="col">decline</th>
+                    
+                    
                   </tr>
                 </thead>
                 <tbody>
-                  {% for obj in pendingobj %}
+                  {% for obj in query %}
                   <tr>
                     <th scope="row">{{obj.pk}}</th>
                     <td>{{obj.reason}}</td>
@@ -159,8 +159,8 @@
                     
                     
                     
-                    <td><a href="{% url 'facultyaccept' pk=obj.pk %}"><img src="{% static 'back/edit.png' %}"></a></td>
-                    <td><a href="{% url 'facultydecline' pk=obj.pk %}"><img src="{% static 'back/delete.png' %}"></a></td>
+                   
+                    
                     
                   </tr>
                   {% endfor %}

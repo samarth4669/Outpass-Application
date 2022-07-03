@@ -100,7 +100,12 @@
       </li><!-- End Dashboard Nav -->
 
       
-
+      <li class="nav-item">
+        <a class="nav-link " href="{%url 'messageinfaculty' %}">
+          <i class="bi bi-grid"></i>
+          <span>Messages</span>
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Request List</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -120,6 +125,16 @@
             <li>
             <a href="{% url 'showfacultydecline' %}">
               <i class="bi bi-circle"></i><span>Declined Requests</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'specialwarden' %}">
+              <i class="bi bi-circle"></i><span>Special  Requests Warden</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'specialcoordinater' %}">
+              <i class="bi bi-circle"></i><span>Special  Requests coordinater</span>
             </a>
           </li>
           
@@ -183,7 +198,7 @@
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>1</h6>
+                      <h6>{{pno}}</h6>
                     </div>
                   </div>
                   <a href="{% url 'pending' %}" class="btn-buy">Check Now</a>
@@ -209,7 +224,7 @@
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>2</h6>
+                      <h6>{{sno}}</h6>
                       
 
                     </div>
@@ -241,7 +256,7 @@
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>0</h6>
+                      <h6>{{dno}}</h6>
                       
                     </div>
                   </div>
@@ -266,21 +281,23 @@
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>
-                        <th scope="col">Roll No</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">No of Days</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">email</th>
+                        <th scope="col">reason</th>
+                        
                         <th scope="col">Status</th>
                       </tr>
                     </thead>
                     <tbody>
+                      {% for obj in b %}
                       <tr>
-                        <th scope="row"><a href="#">21BCS136</a></th>
-                        <td>Yadukrishna PB</td>
-                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
+                        <th scope="row"><a href="#">{{obj.pk}}</a></th>
+                        <td>{{obj.email}}</td>
+                        <td><a href="#" class="text-primary">{{obj.reason}}</a></td>
                         <td>21</td>
-                        <td><span class="badge bg-success">Approved</span></td>
+                        <td><span class="badge bg-success">{{obj.status}}</span></td>
                       </tr>
+                      {% endfor %}
                       
                     </tbody>
                   </table>

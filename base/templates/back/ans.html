@@ -100,7 +100,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'adminhome' %}">
+        <a class="nav-link collapsed" href="#">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -116,67 +116,27 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Pending Requests</h1>
+      <h1>message</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{% url 'pending' %}">Home</a></li>
-          <li class="breadcrumb-item">Requests</li>
-          <li class="breadcrumb-item active">Pending Requests</li>
+          <li class="breadcrumb-item"><a href="{% url 'showfacultyaccept' %}">Home</a></li>
+          <li class="breadcrumb-item">message</li>
+          <li class="breadcrumb-item active">message</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
     <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
+        <div>
+            <form action="{% url 'answerthequery' pk=pk %}" method="POST">
+                {% csrf_token %}
+                <p><label for="w3review">Your Answer:</label></p>
+                <textarea id="w3review" name="message" rows="4" cols="50"></textarea>
+                <br>
+                <input type="submit" value="Submit" class="button">
 
-          <div class="card">
-            <div class="card-body">
-              
-              <!-- Table with stripped rows -->
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">reason</th>
-                    <th scope="col">email</th>
-                    <th scope="col">startdate</th>
-                    <th scope="col">returningdate</th>
-                    <th scope="col">days</th>
-                    <th scope="col">Accept</th>
-                    <th scope="col">decline</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for obj in pendingobj %}
-                  <tr>
-                    <th scope="row">{{obj.pk}}</th>
-                    <td>{{obj.reason}}</td>
-                    <td>{{obj.email}}</td>
-                    <td>{{obj.starttime}}</td>
-                    <td>{{obj.endtime}}</td>
-                    <td>{{obj.days}}</td>
-                    
-                    
-                    
-                    <td><a href="{% url 'facultyaccept' pk=obj.pk %}"><img src="{% static 'back/edit.png' %}"></a></td>
-                    <td><a href="{% url 'facultydecline' pk=obj.pk %}"><img src="{% static 'back/delete.png' %}"></a></td>
-                    
-                  </tr>
-                  {% endfor %}
-                  
-                  
-                    
-                  
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
-
-            </div>
-          </div>
-
+            </form>    
         </div>
-      </div>
     </section>
 
   </main><!-- End #main -->

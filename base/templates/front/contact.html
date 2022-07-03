@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Pending Requests</title>
+  <title>Contact the faculty</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -17,7 +17,8 @@
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
+  <link rel="stylesheet" href="{% static 'front/m.css' %}">
+ 
   <!-- Vendor CSS Files -->
   <link href="{% static 'back/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'back/bootstrap-icons.css' %}" rel="stylesheet">
@@ -28,13 +29,9 @@
   <link href="{% static 'back/style.css' %}" rel="stylesheet">
   <!-- Template Main CSS File -->
   <link href="{% static 'back/st.css' %}" rel="stylesheet">
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
   
-
-  <!-- Template Main CSS File -->
-  
-
-</head>
 
 <body>
 
@@ -43,8 +40,9 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <i class="bi bi-list toggle-sidebar-btn"></i>
+
       <a href="#" class="logo d-flex align-items-center">
-        <span class="d-none d-lg-block"> &#160;Out Pass System</span>
+        
       </a>
     </div><!-- End Logo -->
 
@@ -61,8 +59,10 @@
           </a>
         </li><!-- End Search Icon-->
 
+       
         
 
+          
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
@@ -71,16 +71,27 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>{{request.user}}</h6>
-              <span>Faculty Advisor</span>
+              <h6>{{o}}</h6>
+              <span>Student</span>
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
 
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'home' %}">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{% url 'loggingout' %}">
+              <a class="dropdown-item d-flex align-items-center" href="{%url 'loggingout' %}">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -100,11 +111,13 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'adminhome' %}">
+        <a class="nav-link collapsed" href="{% url 'home' %}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
+
+      
 
       
 
@@ -116,76 +129,57 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Pending Requests</h1>
+      <h1>Contac the faculty advisor</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{% url 'pending' %}">Home</a></li>
-          <li class="breadcrumb-item">Requests</li>
-          <li class="breadcrumb-item active">Pending Requests</li>
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+          <li class="breadcrumb-item">Pages</li>
+          <li class="breadcrumb-item active">Contact</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
+    <section class="section contact">
+        <div class="form">
+            <h1>Get In Touch</h1>
+            <form action="{% url 'message' %}" method="POST">
+              {% csrf_token %}
+                <div class="flex-rev">
+                    <input type="text" placeholder="Connor Gaunt" name="name" id="name" />
+                    <label for="name">Full Name:</label>
+                </div>
+                <div class="flex-rev">
+                    <input type="email" placeholder="connor@connorgaunt.com" name="email" id="email" />
+                    <label for="email">Your Email:</label>
+                </div>
 
-          <div class="card">
-            <div class="card-body">
-              
-              <!-- Table with stripped rows -->
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">reason</th>
-                    <th scope="col">email</th>
-                    <th scope="col">startdate</th>
-                    <th scope="col">returningdate</th>
-                    <th scope="col">days</th>
-                    <th scope="col">Accept</th>
-                    <th scope="col">decline</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for obj in pendingobj %}
-                  <tr>
-                    <th scope="row">{{obj.pk}}</th>
-                    <td>{{obj.reason}}</td>
-                    <td>{{obj.email}}</td>
-                    <td>{{obj.starttime}}</td>
-                    <td>{{obj.endtime}}</td>
-                    <td>{{obj.days}}</td>
-                    
-                    
-                    
-                    <td><a href="{% url 'facultyaccept' pk=obj.pk %}"><img src="{% static 'back/edit.png' %}"></a></td>
-                    <td><a href="{% url 'facultydecline' pk=obj.pk %}"><img src="{% static 'back/delete.png' %}"></a></td>
-                    
-                  </tr>
-                  {% endfor %}
-                  
-                  
-                    
-                  
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
-
-            </div>
-          </div>
-
+                <div class="flex-rev">
+                    <textarea placeholder="I have an idea for a project...." name="message" id="message" /></textarea>
+                    <label for="message"> Message</label>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
         </div>
-      </div>
-    </section>
+    </div>
+</div>
+  
+  
+  
+
+
+      
+                  
+
+                 
 
   </main><!-- End #main -->
 
-  
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+  
+
   <script src="{% static 'back/apexcharts.min.js' %}"></script>
   <script src="{% static 'back/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'back/chart.min.js' %}"></script>
@@ -197,9 +191,6 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'back/main.js' %}"></script>
-  
-
-  
 
 </body>
 

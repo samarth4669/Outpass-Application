@@ -83,7 +83,7 @@
             
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'loggingout' %}">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -103,7 +103,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="#">
+        <a class="nav-link " href="{% url 'adminhome' %}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -164,7 +164,7 @@
       <h1>Form Elements</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'adminhome' %}">Home</a></li>
           <li class="breadcrumb-item">Forms</li>
           <li class="breadcrumb-item active">Elements</li>
         </ol>
@@ -184,7 +184,7 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
-                            ROOM database
+                            mentee database
                         </div>
                         <div class="card-body">
                             <table id="datatablesSimple">

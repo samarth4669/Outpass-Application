@@ -102,7 +102,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="#">
+        <a class="nav-link " href="{% url 'home' %}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -116,9 +116,15 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link " href="#">
+        <a class="nav-link " href="{% url 'getoutpass' %}">
           <i class="bi bi-grid"></i>
           <span>Out Pass</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'message' %}">
+          <i class="bi bi-grid"></i>
+          <span>contact us</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
@@ -169,11 +175,12 @@
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>1</h6>
+                      <h6>{{pending}}</h6>
                       
 
                     </div>
                   </div>
+                  <a href="{% url 'studentpending' %}" class="btn-buy">Check Now</a>
                 </div>
 
               </div>
@@ -195,11 +202,12 @@
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>2</h6>
+                      <h6>{{accept}}</h6>
                       
 
                     </div>
                   </div>
+                  <a href="{% url 'studentaccept' %}" class="btn-buy">Check Now</a>
                 </div>
 
               </div>
@@ -228,10 +236,11 @@
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>0</h6>
+                      <h6>{{declined}}</h6>
                       
                     </div>
                   </div>
+                  <a href="{% url 'studentdecline' %}" class="btn-buy">Check Now</a>
 
                 </div>
                 
@@ -285,21 +294,28 @@
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>
-                        <th scope="col">Roll No</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">No of Days</th>
+                        
+                        <th scope="col">ID</th>
+                        <th scope="col">email</th>
+                        <th scope="col">reason</th>
+                        <th scope="col">days</th>
+                        <th scope="col">ENDtime</th>
                         <th scope="col">Status</th>
                       </tr>
                     </thead>
                     <tbody>
+                      {% for obj in query %}
                       <tr>
-                        <th scope="row"><a href="#">21BCS136</a></th>
-                        <td>YaduKrishna PB</td>
-                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                        <td>21</td>
-                        <td><span class="badge bg-success">Approved</span></td>
+                        
+                        <th scope="row"><a href="#">{{obj.pk}}</a></th>
+                        <td>{{obj.email}}</td>
+                        <td><a href="#" class="text-primary">{{obj.reason}}</a></td>
+                        <td>{{obj.days}}</td>
+                        <td>{{obj.endtime}}</td>
+                        <td><span class="badge bg-success">{{obj.status}}</span></td>
+
                       </tr>
+                      {% endfor %}
                       
                     </tbody>
                   </table>
