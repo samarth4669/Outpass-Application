@@ -53,7 +53,8 @@ def adminhome(request):
         pno=len(requesting.objects.all().filter(status="pending").filter(faculty=y))
         sno=len(requesting.objects.all().filter(status="accepted").filter(faculty=y))
         dno=len(requesting.objects.all().filter(status="declined").filter(faculty=y))
-    return render(request,'back/panel.html',{'b':b,'pno':pno,'sno':sno,'dno':dno})
+        return render(request,'back/panel.html',{'b':b,'pno':pno,'sno':sno,'dno':dno})
+    return render(request,'back/panel.html')    
 def dataentry(request):
     # to check if user is logged in or not
     perm=0
