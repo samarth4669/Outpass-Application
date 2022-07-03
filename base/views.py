@@ -47,11 +47,12 @@ def adminhome(request):
         return redirect('login')
     datet=datetime.datetime.now()
     x=data.objects.filter(facultymailid=request.user)
-    y=x[0].facultyname
-    b=requesting.objects.all().filter(starttime__gte=datet).filter(faculty=y)
-    pno=len(requesting.objects.all().filter(status="pending").filter(faculty=y))
-    sno=len(requesting.objects.all().filter(status="accepted").filter(faculty=y))
-    dno=len(requesting.objects.all().filter(status="declined").filter(faculty=y))
+    if(len(x)!=0):
+        y=x[0].facultyname
+        b=requesting.objects.all().filter(starttime__gte=datet).filter(faculty=y)
+        pno=len(requesting.objects.all().filter(status="pending").filter(faculty=y))
+        sno=len(requesting.objects.all().filter(status="accepted").filter(faculty=y))
+        dno=len(requesting.objects.all().filter(status="declined").filter(faculty=y))
     return render(request,'back/panel.html',{'b':b,'pno':pno,'sno':sno,'dno':dno})
 def dataentry(request):
     # to check if user is logged in or not
