@@ -447,10 +447,12 @@ def showpending(request):
         return redirect('login')
     q=request.user
     x=data.objects.filter(facultymailid=q)
-    o=x[0].facultyname
+    if(len(x)!=0):
+             o=x[0].facultyname
 
-    pendingobj=requesting.objects.filter(faculty=o).filter(status="pending").filter(isfaculty="no")
-    return render(request,'back/pending.html',{'pendingobj':pendingobj})   
+             pendingobj=requesting.objects.filter(faculty=o).filter(status="pending").filter(isfaculty="no")
+             return render(request,'back/pending.html',{'pendingobj':pendingobj})
+    return render(request,'back/pending.html')             
 def facultyaccept(request,pk):
     perm=0
     for i in request.user.groups.all():
@@ -541,9 +543,11 @@ def showfacultyaccept(request):
         return redirect('login')
     q=request.user
     x=data.objects.filter(facultymailid=q)
-    o=x[0].facultyname
-    query=requesting.objects.filter(faculty=o).filter(isfaculty="yes")
-    return render(request,'back/facultyaccept.html',{'query':query})
+    if(len(x)!=0):
+          o=x[0].facultyname
+          query=requesting.objects.filter(faculty=o).filter(isfaculty="yes")
+          return render(request,'back/facultyaccept.html',{'query':query})
+    return render(request,'back/facultyaccept.html')      
 def showfacultydecline(request):
     perm=0
     for i in request.user.groups.all():
@@ -553,9 +557,11 @@ def showfacultydecline(request):
         return redirect('login')
     q=request.user
     x=data.objects.filter(facultymailid=q)
-    o=x[0].facultyname
-    query=requesting.objects.filter(faculty=o).filter(status="declined").filter(isfaculty="no")
-    return render(request,'back/facultydecline.html',{'query':query})    
+    if(len(x)!=0):
+           o=x[0].facultyname
+           query=requesting.objects.filter(faculty=o).filter(status="declined").filter(isfaculty="no")
+           return render(request,'back/facultydecline.html',{'query':query})   
+    return render(request,'back/facultydecline.html')           
 def specialrequestforwarden(request):
     perm=0
     for i in request.user.groups.all():
