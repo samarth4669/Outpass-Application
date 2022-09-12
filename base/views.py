@@ -212,7 +212,7 @@ def userregistering(request):
             with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                        smtp.ehlo()
                        smtp.starttls()
-                       smtp.login('21bcs110@iiitdwd.ac.in','cqidtruxzsxarlfn')
+                       smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
                        smtp.send_message(email)  
            
             
@@ -253,7 +253,7 @@ def userlogin(request):
                       with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                              smtp.ehlo()
                              smtp.starttls()
-                             smtp.login('21bcs110@iiitdwd.ac.in','cqidtruxzsxarlfn')
+                             smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
                              smtp.send_message(email)
                       return redirect('adminhome')
                 else:
@@ -268,7 +268,7 @@ def userlogin(request):
                       with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                              smtp.ehlo()
                              smtp.starttls()
-                             smtp.login('21bcs110@iiitdwd.ac.in','cqidtruxzsxarlfn')
+                             smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
                              smtp.send_message(email)
                       return redirect('home')
 
@@ -312,7 +312,7 @@ def changingpassword(request):
         with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                  smtp.ehlo()
                  smtp.starttls()
-                 smtp.login('21bcs110@iiitdwd.ac.in','cqidtruxzsxarlfn')
+                 smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
                  smtp.send_message(email)
     return render(request,'front/plussing.html')  
 
@@ -423,7 +423,7 @@ def outpass(request):
         with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                        smtp.ehlo()
                        smtp.starttls()
-                       smtp.login('21bcs110@iiitdwd.ac.in','cqidtruxzsxarlfn')
+                       smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
                        smtp.send_message(email)      
                       
         
@@ -477,7 +477,7 @@ def facultyaccept(request,pk):
         with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                             smtp.ehlo()
                             smtp.starttls()
-                            smtp.login('21bcs110@iiitdwd.ac.in','cqidtruxzsxarlfn')
+                            smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
                             smtp.send_message(email) 
         return redirect('pending')  
     else:
@@ -512,7 +512,7 @@ def facultyaccept(request,pk):
         with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                             smtp.ehlo()
                             smtp.starttls()
-                            smtp.login('21bcs110@iiitdwd.ac.in','cqidtruxzsxarlfn')
+                            smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
                             smtp.send_message(email) 
         return redirect('pending')  
 
@@ -531,7 +531,7 @@ def facultydecline(request,pk):
     with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                             smtp.ehlo()
                             smtp.starttls()
-                            smtp.login('21bcs110@iiitdwd.ac.in','cqidtruxzsxarlfn')
+                            smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
                             smtp.send_message(email) 
     return redirect('pending')
 def showfacultyaccept(request):
@@ -596,7 +596,7 @@ def acceptwarden(request,pk):
         with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                             smtp.ehlo()
                             smtp.starttls()
-                            smtp.login('21bcs110@iiitdwd.ac.in','cqidtruxzsxarlfn')
+                            smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
                             smtp.send_message(email) 
         return redirect('adminhome')
     else:
@@ -623,7 +623,7 @@ def wardendecline(request,pk):
     with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                             smtp.ehlo()
                             smtp.starttls()
-                            smtp.login('21bcs110@iiitdwd.ac.in','cqidtruxzsxarlfn')
+                            smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
                             smtp.send_message(email) 
     return redirect('adminhome')
 
@@ -659,7 +659,7 @@ def acceptcoordinate(request,pk):
         with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                             smtp.ehlo()
                             smtp.starttls()
-                            smtp.login('21bcs110@iiitdwd.ac.in','cqidtruxzsxarlfn')
+                            smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
                             smtp.send_message(email) 
         return redirect('adminhome')
     else:
@@ -689,7 +689,7 @@ def declinecoordinate(request,pk):
     with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                             smtp.ehlo()
                             smtp.starttls()
-                            smtp.login('21bcs110@iiitdwd.ac.in','cqidtruxzsxarlfn')
+                            smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
                             smtp.send_message(email) 
     return redirect('adminhome')
 
@@ -782,7 +782,7 @@ def answerthequery(request,pk):
         with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                        smtp.ehlo()
                        smtp.starttls()
-                       smtp.login('21bcs110@iiitdwd.ac.in','cqidtruxzsxarlfn')
+                       smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
                        smtp.send_message(email)
         return redirect('messageinfaculty')               
 
@@ -836,8 +836,9 @@ def getoutpassemail(request):
                      has been accepted
                      G.G.
                   '''
-           sender = '21bcs110@iiitdwd.ac.in'
-           password = 'cqidtruxzsxarlfn'
+                
+           sender = 'yadukrishnapbiiit@gmail.com'
+           password = 'vjlnvzdpfxdsvnyk'
            receiver = em
            message = MIMEMultipart()
            message['From'] = sender
