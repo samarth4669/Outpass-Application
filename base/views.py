@@ -205,10 +205,10 @@ def userregistering(request):
             print(w)
             email=e()
         
-            email['from']='21BCS110'
+            email['from']='OUTPASS'
             email['to']=w
-            email['subject']='registering  into account'
-            email.set_content("congrats!you are registerd now!! ")
+            email['subject']='Registering  into account'
+            email.set_content("Congrats! You are registered now!! ")
             with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                        smtp.ehlo()
                        smtp.starttls()
@@ -246,10 +246,10 @@ def userlogin(request):
                       print(w)
                       email=e()
         
-                      email['from']='21BCS110'
+                      email['from']='Out Pass'
                       email['to']=w
-                      email['subject']='logging into account'
-                      email.set_content("you are logged into your account")
+                      email['subject']='Logging into account'
+                      email.set_content("You are logged into your account")
                       with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                              smtp.ehlo()
                              smtp.starttls()
@@ -261,10 +261,10 @@ def userlogin(request):
                       print(w)
                       email=e()
         
-                      email['from']='21BCS110'
+                      email['from']='OUTPASS'
                       email['to']=w
-                      email['subject']='logging into account'
-                      email.set_content("you are logged into your account")
+                      email['subject']='Logging into account'
+                      email.set_content("You are logged into your account")
                       with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                              smtp.ehlo()
                              smtp.starttls()
@@ -305,9 +305,9 @@ def changingpassword(request):
         print(email1)
         email=e()
         
-        email['from']='21BCS110'
+        email['from']='OUTPASS'
         email['to']=email1
-        email['subject']='changing the password'
+        email['subject']='Changing the password'
         email.set_content(mini)
         with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                  smtp.ehlo()
@@ -416,10 +416,10 @@ def outpass(request):
        
         email=e()
         
-        email['from']='21BCS110'
+        email['from']='OUTPASS'
         email['to']=we
-        email['subject']='new request has been updated'
-        email.set_content("pending request")
+        email['subject']='New request has been updated'
+        email.set_content("Pending request")
         with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                        smtp.ehlo()
                        smtp.starttls()
@@ -470,10 +470,10 @@ def facultyaccept(request,pk):
         acceptobj.save()
         email=e()
         
-        email['from']='21BCS110'
+        email['from']='OUTPASS'
         email['to']=w
-        email['subject']='accepting the request'
-        email.set_content("your request for levave has been accepted ")
+        email['subject']='Accepting the request'
+        email.set_content("Your request for levave has been accepted ")
         with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                             smtp.ehlo()
                             smtp.starttls()
@@ -507,8 +507,8 @@ def facultyaccept(request,pk):
         print( acceptobj.ward)
         email['from']='21BCS110'
         email['to']=wardenemail,coordinator
-        email['subject']='new request '
-        email.set_content("new special request has been updated")
+        email['subject']='New request '
+        email.set_content("New special request has been updated")
         with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                             smtp.ehlo()
                             smtp.starttls()
@@ -524,10 +524,10 @@ def facultydecline(request,pk):
     decliningobj.save()
     email=e()
         
-    email['from']='21BCS110'
+    email['from']='OUTPASS'
     email['to']=w
-    email['subject']='declining the request'
-    email.set_content("your request for levave has been declined by your faculty advisor ")
+    email['subject']='Declining the request'
+    email.set_content("Your request for levave has been declined by your faculty advisor ")
     with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                             smtp.ehlo()
                             smtp.starttls()
@@ -589,10 +589,10 @@ def acceptwarden(request,pk):
         email=e()
         w=req.email
         
-        email['from']='21BCS110'
+        email['from']='OUTPASS'
         email['to']=w
-        email['subject']='accepting the request'
-        email.set_content("your request for levave has been accepted by your faculty advisor,warden,coordinater ")
+        email['subject']='Accepting the request'
+        email.set_content("Your request for leave has been accepted by your faculty advisor , warden, coordinater ")
         with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                             smtp.ehlo()
                             smtp.starttls()
@@ -616,10 +616,10 @@ def wardendecline(request,pk):
     email=e()
     w=req.email
         
-    email['from']='21BCS110'
+    email['from']='OUTPASS'
     email['to']=w
-    email['subject']='declining the request'
-    email.set_content("your request for levave has been accepted by your faculty advisor,declined by warden ")
+    email['subject']='Declining the request'
+    email.set_content("Your request for levave has been accepted by your faculty advisor,declined by warden ")
     with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                             smtp.ehlo()
                             smtp.starttls()
@@ -652,10 +652,10 @@ def acceptcoordinate(request,pk):
         email=e()
         w=req.email
         
-        email['from']='21BCS110'
+        email['from']='OUTPASS'
         email['to']=w
-        email['subject']='accepting the request'
-        email.set_content("your request for levave has been accepted by your faculty advisor,warden,coordinater ")
+        email['subject']='Accepting the request'
+        email.set_content("Your request for leave has been accepted by your faculty advisor,warden,coordinater ")
         with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                             smtp.ehlo()
                             smtp.starttls()
@@ -682,10 +682,10 @@ def declinecoordinate(request,pk):
     email=e()
     w=req.email
         
-    email['from']='21BCS110'
+    email['from']='OUTPASS'
     email['to']=w
-    email['subject']='declining the request'
-    email.set_content("your request for levave has been accepted by your faculty advisor,declined by coordinater ")
+    email['subject']='Declining the request'
+    email.set_content("Your request for leave has been accepted by your faculty advisor , declined by coordinater ")
     with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
                             smtp.ehlo()
                             smtp.starttls()
@@ -775,7 +775,7 @@ def answerthequery(request,pk):
         w=ret.email
         email=e()
         
-        email['from']='21BCS110'
+        email['from']='OUTPASS'
         email['to']=w
         email['subject']='message'
         email.set_content(msg)
@@ -830,11 +830,11 @@ def getoutpassemail(request):
            pdf.cell(200, 10, txt = stringa,ln = 1,)
            pdf.cell(200, 10, txt = stringb,ln = 1,)
            pdf.cell(200, 10, txt = stringc,ln = 1,)
-           pdf.output("GFG.pdf")
+           pdf.output("OutPass.pdf")
            body = '''Hello,
                      your request for outpass
                      has been accepted
-                     G.G.
+                     
                   '''
                 
            sender = 'yadukrishnapbiiit@gmail.com'
