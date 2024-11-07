@@ -16,7 +16,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
-
+from .utils import sendemail
 # Create your views here.
 
 
@@ -24,7 +24,9 @@ def home(request):
     if not request.user.is_authenticated:
         return redirect('login')
     q=request.user
+    print(q)
     s=data.objects.get(studentid=q).facultyname  
+    print()
     o=data.objects.get(studentid=q).Name 
     query=requesting.objects.filter(status="accepted").filter(users=request.user) 
     pendings=len(requesting.objects.filter(status="pending").filter(users=request.user))
@@ -201,19 +203,9 @@ def userregistering(request):
                 g.user_set.add(user)
                 print(g)
              
-            w=email
-            print(w)
-            email=e()
+            sendemail(email,"Registeration for Outpass System","Congrats! You are registered now!! ")
         
-            email['from']='OUTPASS'
-            email['to']=w
-            email['subject']='Registering  into account'
-            email.set_content("Congrats! You are registered now!! ")
-            with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
-                       smtp.ehlo()
-                       smtp.starttls()
-                       smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
-                       smtp.send_message(email)  
+            
            
             
 
@@ -243,33 +235,15 @@ def userlogin(request):
                 if(perm==1):
 
                       w=request.user.email 
-                      print(w)
-                      email=e()
+                      sendemail(w,'Login Into Outpass System',"You Are Logged into Outpass System")
         
-                      email['from']='Out Pass'
-                      email['to']=w
-                      email['subject']='Logging into account'
-                      email.set_content("You are logged into your account")
-                      with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
-                             smtp.ehlo()
-                             smtp.starttls()
-                             smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
-                             smtp.send_message(email)
+                      
                       return redirect('adminhome')
                 else:
                       w=request.user.email 
-                      print(w)
-                      email=e()
-        
-                      email['from']='OUTPASS'
-                      email['to']=w
-                      email['subject']='Logging into account'
-                      email.set_content("You are logged into your account")
-                      with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
-                             smtp.ehlo()
-                             smtp.starttls()
-                             smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
-                             smtp.send_message(email)
+                      sendemail(w,'Login Into Outpass System',"You Are Logged into Outpass System")
+                     
+                      
                       return redirect('home')
 
             else:
@@ -303,17 +277,8 @@ def changingpassword(request):
         global email1
         email1=request.POST.get('reminder-email')
         print(email1)
-        email=e()
-        
-        email['from']='OUTPASS'
-        email['to']=email1
-        email['subject']='Changing the password'
-        email.set_content(mini)
-        with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
-                 smtp.ehlo()
-                 smtp.starttls()
-                 smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
-                 smtp.send_message(email)
+        sendemail(email1,'Request For Password Change',f'Your New Password is {mini}')
+       
     return render(request,'front/plussing.html')  
 
 
@@ -400,6 +365,7 @@ def outpass(request):
         requestingobj.users=q
         requestingobj.save()
         faculty=data.objects.get(studentid=q).facultymailid
+        print(faculty)
         we=User.objects.get(username=faculty).email
 
 
@@ -413,18 +379,8 @@ def outpass(request):
 
 
 
-       
-        email=e()
-        
-        email['from']='OUTPASS'
-        email['to']=we
-        email['subject']='New request has been updated'
-        email.set_content("Pending request")
-        with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
-                       smtp.ehlo()
-                       smtp.starttls()
-                       smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
-                       smtp.send_message(email)      
+        sendemail(we,"Pending Request For OutPass",'New request has been updated')
+            
                       
         
 
@@ -468,17 +424,8 @@ def facultyaccept(request,pk):
         acceptobj.status="accepted"
         w=acceptobj.email
         acceptobj.save()
-        email=e()
+        sendemail(w,'Status On Your Outpass Request',"Your request for levave has been accepted ")
         
-        email['from']='OUTPASS'
-        email['to']=w
-        email['subject']='Accepting the request'
-        email.set_content("Your request for levave has been accepted ")
-        with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
-                            smtp.ehlo()
-                            smtp.starttls()
-                            smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
-                            smtp.send_message(email) 
         return redirect('pending')  
     else:
         acceptobj.isfaculty="yes"
@@ -505,15 +452,9 @@ def facultyaccept(request,pk):
         acceptobj.cord=User.objects.get(username=k.facultymailid).username
         acceptobj.save()
         print( acceptobj.ward)
-        email['from']='21BCS110'
-        email['to']=wardenemail,coordinator
-        email['subject']='New request '
-        email.set_content("New special request has been updated")
-        with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
-                            smtp.ehlo()
-                            smtp.starttls()
-                            smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
-                            smtp.send_message(email) 
+        sendemail(wardenemail,"New Request For Outpass","New special request has been updated")
+        sendemail(coordinator,"New Request For Outpass","New special request has been updated")
+        
         return redirect('pending')  
 
 def facultydecline(request,pk):
@@ -522,17 +463,8 @@ def facultydecline(request,pk):
     decliningobj.status="declined"
     w=decliningobj.email
     decliningobj.save()
-    email=e()
-        
-    email['from']='OUTPASS'
-    email['to']=w
-    email['subject']='Declining the request'
-    email.set_content("Your request for levave has been declined by your faculty advisor ")
-    with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
-                            smtp.ehlo()
-                            smtp.starttls()
-                            smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
-                            smtp.send_message(email) 
+    sendemail(w,' Status on Request For Outpass',"Your request for levave has been declined by your faculty advisor ")
+   
     return redirect('pending')
 def showfacultyaccept(request):
     perm=0
@@ -773,17 +705,9 @@ def answerthequery(request,pk):
         ret=cont.objects.get(pk=pk)
         print(ret.email)
         w=ret.email
-        email=e()
         
-        email['from']='OUTPASS'
-        email['to']=w
-        email['subject']='message'
-        email.set_content(msg)
-        with s.SMTP(host ='smtp.gmail.com',port=587) as smtp:
-                       smtp.ehlo()
-                       smtp.starttls()
-                       smtp.login('yadukrishnapbiiit@gmail.com','vjlnvzdpfxdsvnyk')
-                       smtp.send_message(email)
+        sendemail(w,'You Have Message From Your Faculty Advisor',msg)
+        
         return redirect('messageinfaculty')               
 
     

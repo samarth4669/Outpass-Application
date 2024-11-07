@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-&$1#%qe&r2c-*0ion$n176y#-@m-*5qs_q859&9t++b8e+zk@w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["shindesamarth19xr.herokuapp.com","127.0.0.1:8000"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -129,3 +129,11 @@ STATIC_ROOT= os.path.join(BASE_DIR,'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #CSRF_TRUSTED_ORIGINS = [" https://shindesamarth19xr.herokuapp.com"]
+
+
+MAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_USE_TLS=True
+EMAIL_PORT=587
+EMAIL_HOST_USER="testdjango127@gmail.com"
+EMAIL_HOST_PASSWORD="ajqi evix ycnu vnuh"
